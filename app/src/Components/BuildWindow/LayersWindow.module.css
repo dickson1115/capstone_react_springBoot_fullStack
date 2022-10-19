@@ -1,0 +1,32 @@
+.layer {
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    margin-top: 15px;
+    padding: 5px 0px 5px 0px;
+    background-color: gainsboro;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px  rgba(129, 129, 129, 50);
+}
+
+.layer:focus {
+    outline: 5px solid rgba(65, 105, 225, 0.50);;
+}
+
+.layers_window {
+
+    display: block;
+    /* margin-left: 5px;
+    box-shadow: 1px 1px 5px  rgba(129, 129, 129, 50);
+    border-radius: 10px;     */
+    box-shadow: -1px 0px 0px 0px rgba(129, 129, 129, 0.5);
+    width:250px;
+    max-width: 250px;
+    min-width: 100px;
+    text-align: center;
+    background-color: beige;
+    padding: 10px;
+    font-weight: bold;
+}
+
+

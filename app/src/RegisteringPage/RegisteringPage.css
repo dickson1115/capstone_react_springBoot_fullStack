@@ -1,0 +1,31 @@
+html,body,input {
+    background-color: gainsboro;
+    font-family: 'Reem Kufi Ink', serif;
+    font-weight: bold;
+}
+
+.inner_container {
+    background-color: beige;
+    width: 60%;
+    margin: auto;
+    border-radius: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    box-shadow: 1px 1px 2px rgb(129 129 129);
+}
+
+.form-control {
+    background-color: gainsboro !important;
+    border-radius: 10px !important;
+    box-shadow: 1px 1px 2px rgb(129 129 129) !important;
+}
+
+.form-control {
+    background-color: gainsboro !important;
+    border-radius: 10px !important;
+    box-shadow: 1px 1px 2px rgb(129 129 129) !important;
+}
+
+#terms {
+    background-color: gainsboro !important;
+}

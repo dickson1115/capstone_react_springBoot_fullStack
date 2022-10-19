@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Reem Kufi Ink">
+	<div class="main_container">
+		<div class="title_container">
+			<img src="./img/name3.png" />
+		</div>
+		<div class="inner_container">
+			<video muted autoplay loop>
+				<source src="./img/tutorial.mp4" type="video/mp4">
+			</video>
+			<div class="login_container">
+				<form th:action="@{/login}" method="post">
+					<h5>User Login</h5>
+					<input name="username" onclick="invalid_style(this)" type="email" placeholder="Email"
+						pattern=".*@[a-z A-Z 0-9]*\.[a-z A-Z 0-9]*" required />
+					<input type="password" name="password" onclick="invalid_style(this)" placeholder="Password"
+						required />
+					<input type="submit" class="login_button" value="LOGIN"></input>
+					<a class="forgot_password" href="#">Forgot Password?</a>
+
+				<div class="footer">
+						<a  class="button_small" href="/" th:href="@{/registration}">Register</a>
+						<a  class="button_small" href="./builderPage.html">Guest Login</a>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+
+
+</html>
+<script>
+	function invalid_style(element) {
+		element.className = "required";
+	}
+</script>
+<style>
+	html {
+		background-color: gainsboro;
+		font-family: 'Reem Kufi Ink', serif;
+		font-weight: bold;
+	}
+
+	.name_icon {
+		position: relative;
+		height: 350px;
+		top: 0px;
+		left: calc(50% - 175px);
+	}
+
+	.main_container {
+		position: relative;
+		/* left: calc(50% - 500px); */
+		top: calc(30vh - 100px);
+		width: 1200px;
+		height: 550px;
+		background-color: beige;
+		margin: auto;
+		text-align: center;
+		border-radius: 10px;
+		box-shadow: 1px 1px 2px rgb(129, 129, 129);
+	}
+
+	.title_container {
+		width: 100%;
+		height: 15%;
+		background-color: rgba(250, 128, 114, 0.10);
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+
+	.title_container img {
+		width: 30%;
+	}
+
+	.inner_container {
+		width: 100%;
+		height: 85%;
+		display: flex;
+	}
+
+	video {
+		height: 100%;
+	}
+
+	.login_container {
+		position: relative;
+		top: 20px;
+		width: 30%;
+	}
+
+	input, .login_button, footer{
+		width: 85%;
+		height: 40px;
+		border: 0px;
+		margin: 10px;
+		border-radius: 25px;
+		text-align: center;
+		font-family: 'Reem Kufi Ink', serif;
+		font-weight: bold;
+		box-shadow: 1px 1px 2px rgb(129, 129, 129);
+	}
+	input {
+		background-color: gainsboro;
+		padding: 0px 10px 0px 10px;
+	}
+
+	input:focus {
+		outline: none;
+	}
+
+	input.required:invalid {
+		outline: 1px solid red;
+		box-shadow: 1px 1px 10px rgb(138, 0, 0);
+	}
+
+	.button_small>a:active,
+	.login_button:active {
+		outline: 5px solid rgba(65, 105, 225, 0.50);
+	}
+
+	.login_button {
+		background-color: lightgreen;
+		width: calc(85% + 20px);
+	}
+
+	.login_button:hover {
+		background-color: darkolivegreen;
+		color: lightgreen;
+	}
+
+	.forgot_password {
+		display: block;
+		text-align: left;
+		font-size: x-small;
+		text-decoration: none;
+		color: red;
+		margin-left: 20px;
+	}
+
+	.forgot_password:hover {
+		color: brown;
+	}
+
+	.footer {
+		position: relative;
+		top: 25px;
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.button_small {
+		width: 45%;
+		font-size: small;
+		border-radius: 20px;
+		box-shadow: 1px 1px 2px rgb(129, 129, 129);
+		padding: 5px 0px 5px 0px;
+		background-color: gainsboro;
+		color: rgb(107, 107, 107);
+		text-decoration: none;
+	}
+
+	.button_small:hover {
+		background-color: lightgreen;
+	}
+
+	/* .login_Icon {
+		position: absolute;
+		left: calc(50% - 50px);
+		width: 100px;
+		height: 100px;
+		box-shadow: 10px 5px gainsboro;
+		z-index: 1000;
+		border-radius: 50%;
+		border: 2px solid black;
+	} */
+</style>

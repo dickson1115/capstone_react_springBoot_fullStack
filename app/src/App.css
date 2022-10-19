@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Reem Kufi Ink');
+.App{
+    font-family: 'Reem Kufi Ink', serif;
+}
+.container{
+    margin: 5px;
+}
+
+select {
+    font-family: 'Reem Kufi Ink', serif;
+    font-weight: bold;
+    background-color: beige;
+    border-radius: 5px;
+}

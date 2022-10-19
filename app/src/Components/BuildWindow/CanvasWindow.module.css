@@ -1,0 +1,14 @@
+.canvas_window{
+    display: block;
+    text-align: center;
+    box-shadow: -1px 0px 0px 0px rgba(129, 129, 129, 0.5);
+    /* border-radius: 10px; */
+    background-color: beige;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.canvas {
+    width: calc(1920px * .85);
+    height: calc(1080px * .85);
+}

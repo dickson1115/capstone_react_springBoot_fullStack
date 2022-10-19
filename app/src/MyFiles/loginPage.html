@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Reem Kufi Ink">
+<div class="outter_container">
+  <div class="main_container">
+    <div class="title">
+      <img src="./img/name3.png" />
+    </div>
+    <div class="container">
+      <img class="photo" src="./img/icon2.jpg" />
+      <div class="inner_container">
+        <h5>User Login</h5>
+        <form>
+          <input onclick="invalid_style(this)" type="email" placeholder="User" pattern=".*@[a-z A-Z 0-9]*" required/>
+          <input onclick="invalid_style(this)" type="text" placeholder="Password" required/>
+          <input type="submit" class="login" value = "LOGIN"></input>
+        </form>
+
+        <div class="footer">
+          <div class="guest_login"><a href="./builderPage.html">Guest Login</a></div>
+          <div class="forgot_password"><a href="#">Forgot password?</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</html>
+<script>
+  function invalid_style(element) {
+    element.className = "required";
+  }
+</script>
+<style>
+  html {
+    background-color: gainsboro;
+    font-family: 'Reem Kufi Ink', serif;
+    font-weight: bold;
+  }
+
+  .name_icon {
+    position: relative;
+    height: 350px;
+    top: 0px;
+    left: calc(50% - 175px);
+  }
+
+  .outter_container {
+    position: relative;
+    left: calc(50% - 500px);
+    top: calc(30vh - 100px);
+    width: 1000px;
+    height: 500px;
+    border: 1px solid gainsboro;
+  }
+
+  .main_container {
+    background-color: beige;
+    position: relative;
+    display: block;
+    margin: auto;
+    text-align: center;
+    border: 1px solid beige;
+    box-shadow: 10px 5px gainsboro;
+    border-radius: 10px;
+  }
+
+  .title {
+    width: 100%;
+    background-color: rgba(250, 128, 114, 0.10);
+    border-radius: 10px;
+  }
+
+  .title img {
+    width: 30%;
+  }
+
+  .photo {
+    width: 70%;
+    opacity: 0.5;
+  }
+
+  .inner_container {
+    position: relative;
+    top: 50px;
+
+    width: 30%;
+  }
+
+  input {
+    background-color: gainsboro;
+    text-align: center;
+    width: 80%;
+    height: 40px;
+    border: 0px;
+    margin: 10px;
+    border-radius: 25px;
+    font-family: 'Reem Kufi Ink', serif;
+    font-weight: bold;
+  }
+
+  .login {
+    background-color: lightgreen;
+    text-align: center;
+    width: 82%;
+    height: 40px;
+    border: 0px;
+    margin: 10px;
+    border-radius: 25px;
+    font-family: 'Reem Kufi Ink', serif;
+    font-weight: bold;
+
+  }
+
+  .container {
+    width: 100%;
+    display: flex;
+  }
+
+  .login:hover {
+    background-color: darkolivegreen;
+    color: lightgreen;
+  }
+
+
+  .forgot_password,
+  .guest_login {
+    position: relative;
+    width: 40%;
+    display: block;
+  }
+
+  .forgot_password>a,
+  .guest_login>a {
+    display: block;
+    font-size: x-small;
+    color: red;
+    text-decoration: none;
+    background-color: rgba(255, 0, 0, 0.084);
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .guest_login>a {
+    color: rgb(107, 107, 107);
+    background-color: gainsboro;
+  }
+
+  .forgot_password :hover {
+    color: brown;
+  }
+
+  .guest_login :hover {
+    background-color: lightgreen;
+  }
+
+  a{
+    border: 5px solid royalblue;
+  }
+  
+
+  .login_Icon {
+    position: absolute;
+    left: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+    box-shadow: 10px 5px gainsboro;
+    z-index: 1000;
+    border-radius: 50%;
+    border: 2px solid black;
+
+  }
+
+  .footer {
+    position: relative;
+    margin: auto;
+    top: 20px;
+    height: 40px;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+
+
+  }
+input{
+  border: 1px solid beige;
+  box-shadow: 1px 1px 10px  beige;
+}
+  input.required:invalid{
+    border: 1px solid red;
+    box-shadow: 1px 1px 10px  red;
+  }
+  input:focus{
+    outline:none;
+}
+</style>

@@ -1,0 +1,8 @@
+.resize_drag {
+
+
+  touch-action: none;
+
+  /* This makes things *much* easier */
+  box-sizing: border-box;
+}

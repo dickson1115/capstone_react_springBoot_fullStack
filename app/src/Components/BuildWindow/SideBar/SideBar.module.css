@@ -1,0 +1,14 @@
+.side_bar{
+    background-color: beige;
+    /* min-width: 80px; */
+    max-width: 200px;
+    min-width: 100px;
+    /* border-radius: 10px; */
+    padding: 10px;
+    display: block;
+    /* box-shadow: 1px 0px 0px 0px rgba(129, 129, 129, 50); */
+    font-family: 'Reem Kufi Ink', serif;
+
+    
+}
+

@@ -1,0 +1,19 @@
+.resize_drag_element {
+    position: absolute;
+    height: 80px;
+    touch-action: none;
+}
+
+.resize_drag_element:focus {
+    outline: 5px solid rgba(65, 105, 225, 0.50);;
+    background-color: #4169e120;
+    border-radius: 5px;
+
+}
+  
+  /* .resize_drag_element:active{
+    outline: 5px solid rgba(65, 105, 225, 0.50);;
+    background-color: #4169e120;
+    border-radius: 5px;
+  }
+   */

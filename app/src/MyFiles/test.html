@@ -1,0 +1,194 @@
+<link rel="stylesheet" href="./test.css" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<script type="text/javascript" src="./test.js"></script>
+
+<html>
+</div>
+<div class="view_explore_window">
+    <div class="project_container">
+        <div class="project_canvas">
+            <img src="img/front.png" style="display: flex;">
+            <img src="img/side.png" style="display: none;">
+            <img src="img/top.png" style="display: none;">
+        </div>
+        <div class="view_controller">
+            <div class="show_view_selected" onclick="show_view(this,0)">
+                <div>Front</div>
+            </div>
+            <div class="show_view_element" onclick="show_view(this,1)">
+                <div>Side</div>
+            </div>
+            <div class="show_view_element" onclick="show_view(this,2)">
+                <div>Top</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var element = document.querySelector(".project_container");
+        console.log(element);
+        var container = document.querySelector(".view_explore_window");
+        console.log(container);
+        for (var i = 0; i < 11; i++) {
+            container.appendChild(element.cloneNode(true));
+        }
+    </script>
+</div>
+
+
+</html>
+
+
+<style>
+    /* @media (min-width: 900px) {
+        .view_explore_window {
+            width: 100%;
+            grid-template-columns: repeat(auto-fill, calc(100% / 3));
+        }
+    } */
+
+    #explore {
+        background-color: rgba(129, 129, 129, 0.3);
+        border-radius: 10%;
+    }
+
+    .view_explore_window {
+        position: relative;
+        top: 50px;
+        display: grid;
+        /* grid-template-columns: repeat(auto-fill, calc(100% / 5)); */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        width: 85%;
+        margin: auto;
+        gap: 24px;
+    }
+
+    /* @media (300px <= width < 600px) {
+        .view_explore_window {
+            width: 100%;
+            grid-template-columns: repeat(auto-fill, calc(100% / 1));
+        }
+    }
+    @media (600px <= width < 900px){
+        .view_explore_window {
+            width: 100%;
+            grid-template-columns: repeat(auto-fill, calc(100% / 2));
+        }
+    }*/
+    /* @media only screen and (min-device-width: 900px) and (max-device-width: 1200px) {
+        .view_explore_window {
+            width: 100%;
+            grid-template-columns: repeat(auto-fill, calc(100% / 3));
+        }
+} */
+    /* @media (1200px <= width < 1500px) {
+        .view_explore_window {
+            width: 100%;
+            grid-template-columns: repeat(auto-fill, calc(100% / 4));
+        }
+    }  */
+
+    .project_container {
+        aspect-ratio: 1 / 1;
+        position: relative;
+        /* border: 1px solid rgba(129, 129, 129, 0.3); */
+        background-color: beige;
+        border-radius: 0.5vw;
+        display: block;
+        box-shadow: 1px 1px 10px  rgba(129, 129, 129);
+    }
+
+    .project_canvas {
+        position: relative;
+        display: block;
+        height: 85%;
+        width: 100%;
+    }
+
+    .project_canvas img {
+        position: relative;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .view_controller {
+        position: absolute;
+        width: 100%;
+        height: 15%;
+        bottom: 0px;
+        display: flex;
+        justify-content: space-between;
+        vertical-align: middle;
+    }
+
+    .view_controller>div {
+        text-align: center;
+        vertical-align: middle;
+        width: 33%;
+        border-top-right-radius: 10%;
+        border-top-left-radius: 10%;
+        /* border-radius: 0.5vw; */
+
+
+    }
+
+    .view_controller div div {
+        position: relative;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .view_controller .show_view_element:hover {
+        background-color: rgba(129, 129, 129, 0.3);
+    }
+
+    .show_view_selected {
+        background-color: rgba(129, 129, 129, 0.3);
+    }
+
+    .containerbox {
+        position: relative;
+        top: 109px;
+        left: 100px;
+        width: 400px;
+        height: 400px;
+        background-color: pink;
+    }
+
+    .smallervox {
+        display: block;
+        position: relative;
+        top: 100%;
+        width: 40px;
+        height: 40px;
+        background-color: aqua;
+    }
+</style>
+
+<script>
+    function show_view(element, num) {
+        var related_element = element.parentNode.parentNode.children[0];
+        var children_list = related_element.children;
+        var view_controller_children_list = element.parentNode.children;
+        console.log(children_list);
+        for (var i = 0; i < children_list.length; i++) {
+            var child = children_list[i];
+            if (i == num) {
+                children_list[i].style.display = "flex";
+                view_controller_children_list[i].className = "show_view_selected";
+            }
+            else {
+                children_list[i].style.display = "none";
+                view_controller_children_list[i].className = "show_view_element";
+            }
+        }
+    }
+    function button_onclick(element) {
+        element.style.backgroundColor = "rgba(250, 128, 114, 0.442)";
+    }
+</script>

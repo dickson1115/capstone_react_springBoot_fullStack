@@ -1,0 +1,19 @@
+.scroll_menu{
+    overflow-x: scroll;
+    white-space: nowrap;
+    padding: 10px;
+}
+
+.scroll_menu::-webkit-scrollbar {
+    height: 5px;
+}
+
+.scroll_menu::-webkit-scrollbar-track {
+    border-radius: 5px;
+}
+
+.scroll_menu::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-clip: content-box;
+    background-color: rgb(167, 167, 149);
+}

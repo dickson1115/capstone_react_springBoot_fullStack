@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="./resize_drag.css" type="text/css" />
+<link rel="stylesheet" href="./builderPage.css" type="text/css" />
+<link rel="stylesheet" href="./animation.css" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<script src="./resize_drag.js"></script>
+<script src="./builderPage.js"></script>
+<section class="components_section">
+
+</section>
+<div class="top_background"> </div>
+<div class="top_bar">
+    <img class="name_icon" src="./img/name3.png" />
+    <div class="navigation_bar">
+        <a class="button" href="#">Home</a>
+        <a class="button" href="#">Tutorial</a>
+        <a id="builder" class="button" href="./builderPage.html" >Builder</a>
+        <a id="explore" class="button" href="./explorePage.html" >Explore</a>
+        <a class="button" href="#">About</a>
+        <a class="button" href="./index.html" >Login</a>
+    </div>
+</div>
+<div class="big_main_container">
+    <div class="components_outter_container">
+        <div>
+            <div class="container_title"> Components </div>
+            <select name="view" onchange="dropDownFunction(this)">
+                <option id="dropdown_view_Front" value="front">Front</option>
+                <option id="dropdown_view_Side" value="side">Side</option>
+                <option id="dropdown_view_Top" value="top">Top</option>
+            </select>
+            <select name="model" onchange="dropDownFunction(this)">
+                <option >Boeing 787</option>
+            </select>
+        </div>
+
+        <div class="components_container">
+
+            <div id="front" class="viewing_angle">
+                <div tabindex="0" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/fuselage_front.png">
+                    <div>Fuselage</div>
+                </div>
+                <div tabindex="1" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/engine_front.png">
+                    <div>Engine</div>
+                </div>
+                <div tabindex="2" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/wheel_front.png">
+                    <div>Wheels</div>
+                </div>
+                <div tabindex="3" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/wing_front.png">
+                    <div>Wing</div>
+                </div>
+                <div tabindex="4" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/horizontal_stab.png">
+                    <div>Horizontal Stabilizer</div>
+                </div>
+                <div tabindex="5" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/vertical_stab.png">
+                    <div>Vertical Stabilizer</div>
+                </div>
+            </div>
+
+            <div id="side" class="viewing_angle">
+                <div tabindex="6" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/engine_side.png">
+                    <div>Engine</div>
+
+                </div>
+                <div tabindex="7" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/wing_side.png">
+                    <div>Wing</div>
+
+                </div>
+                <div tabindex="8" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/horizontal_stab_side.png">
+                    <div>Horizontal Stabilizer</div>
+
+                </div>
+                <div tabindex="9" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/fuselage_side.png">
+                    <div>Fuselage</div>
+                </div>
+                <div tabindex="10" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/vertical_stab_side.png">
+                    <div>Vertical Stabilizer</div>
+                </div>
+            </div>
+
+            <div id="top" class="viewing_angle">
+                <div tabindex="11" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/vertical_stab_top.png">
+                    <div>Vertical Stabilizer</div>
+                </div>
+                <div tabindex="12" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/fuselage_top.png">
+                    <div>Fuselage</div>
+                </div>
+                <div tabindex="13" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/wing_top.png">
+                    <div>Wing</div>
+                </div>
+                <div tabindex="14" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/horizontal_stab_top.png">
+                    <div>Horizontal Stabilizer</div>
+                </div>
+                <div tabindex="15" class="component_container" onclick=clicked_component(this)>
+                    <img src="./img/components/engine_top.png">
+                    <div>Engine</div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="builder_window">
+
+        <div class="views_container">
+            <div class="user_form">
+                <form>
+                    <div style="margin-bottom: 5px;">Engine</div>
+                    <div class="form_input">
+                        <label>x-position:</label>
+                        <input name="submitted-name" autocomplete="name">
+                    </div>
+
+                    <div class="form_input">
+                        <label>y-position:</label>
+                        <input name="submitted-name" autocomplete="name">
+                    </div>
+
+                    <div class="form_input">
+                        <label>z-position:</label>
+                        <input name="submitted-name" autocomplete="name">
+                    </div>
+
+                    <div class="form_input">
+                        <label>Trust:</label>
+                        <input name="submitted-name" autocomplete="name">
+                    </div>
+                </form>
+                <br />
+
+                <div style="margin-bottom: 5px;">Engine</div>
+                <div class="form_input">
+                    <label>x-position:</label>
+                    <input name="submitted-name" autocomplete="name">
+                </div>
+
+                <div class="form_input">
+                    <label>y-position:</label>
+                    <input name="submitted-name" autocomplete="name">
+                </div>
+
+                <div class="form_input">
+                    <label>z-position:</label>
+                    <input name="submitted-name" autocomplete="name">
+                </div>
+
+                <div class="form_input">
+                    <label>Trust:</label>
+                    <input name="submitted-name" autocomplete="name">
+                </div>
+                <br />
+
+                <div style="margin-bottom: 5px;">Engine</div>
+                <div class="form_input">
+                    <label>x-position:</label>
+                    <input name="submitted-name" autocomplete="name">
+                </div>
+
+                <div class="form_input">
+                    <label>y-position:</label>
+                    <input name="submitted-name" autocomplete="name">
+                </div>
+
+                <div class="form_input">
+                    <label>z-position:</label>
+                    <input name="submitted-name" autocomplete="name">
+                </div>
+
+                <div class="form_input">
+                    <label>Trust:</label>
+                    <input name="submitted-name" autocomplete="name">
+                </div>
+                <br />
+
+                <div style="margin-bottom: 5px;">Engine</div>
+                <div class="form_input">
+                    <label>x-position:</label>
+                    <input name="submitted-name" autocomplete="name">
+                </div>
+
+                <div class="form_input">
+                    <label>y-position:</label>
+                    <input name="submitted-name" autocomplete="name">
+                </div>
+
+                <div class="form_input">
+                    <label>z-position:</label>
+                    <input name="submitted-name" autocomplete="name">
+                </div>
+
+                <div class="form_input">
+                    <label>Trust:</label>
+                    <input name="submitted-name" autocomplete="name">
+                </div>
+                </form>
+            </div>
+
+
+
+
+            <div id="front_big_view_container" class="view_container">
+                <div id="front_view_container" class="canvas_container">
+                    <div class="view_container_title">Front</div>
+                    <div id="front_canvas" class="canvas"></div>
+                    <!-- <img src="./img/front_2.png" class="demo"> -->
+                </div>
+                <div class="view_container_manu">
+                    <div class="view_container_title">Layer</div>
+                </div>
+            </div>
+            <div id="side_big_view_container" class="view_container" style="display:none">
+                <div id="side_view_container" class="canvas_container">
+                    <div class="view_container_title">Side</div>
+                    <div id="side_canvas" class="canvas"></div>
+                    <!-- <img src="./img/front_2.png" class="demo"> -->
+                </div>
+                <div class="view_container_manu">
+                    <div class="view_container_title">Layer</div>
+                </div>
+            </div>
+            <div id="top_big_view_container" class="view_container" style="display:none">
+                <div id="top_view_container" class="canvas_container">
+                    <div class="view_container_title">Top</div>
+                    <div id="top_canvas" class="canvas"></div>
+                    <!-- <img src="./img/front_2.png" class="demo"> -->
+                </div>
+                <div class="view_container_manu">
+                    <div class="view_container_title">Layer</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="table_container">
+
+
+        <table>
+            <caption>
+                <h3>DC-8 Jet's Geometric Data</h3>
+            </caption>
+            <tr>
+                <th>Condition</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+            </tr>
+            <tr>
+                <td><i>h</i>, ft</td>
+                <td>0(S/L)</td>
+                <td>15.000</td>
+                <td>33.000</td>
+                <td>33.000</td>
+
+
+            </tr>
+            <tr>
+                <td><i>M</i></td>
+                <td>0.218</td>
+                <td>0.443</td>
+                <td>0.84</td>
+                <td>0.88</td>
+            </tr>
+            <tr>
+                <td><i>V</i>, ft/s</td>
+                <td>243</td>
+                <td>468</td>
+                <td>825</td>
+                <td>868</td>
+            </tr>
+            <tr>
+                <td><i>Q</i>, lb/ft<sup>2</sup></td>
+                <td>70.4</td>
+                <td>164</td>
+                <td>271</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td><i>W</i>, lb</td>
+                <td>3.09E+06</td>
+                <td>3.11E+06</td>
+                <td>3.77E+06</td>
+                <td>3.77E+06</td>
+            </tr>
+            <tr>
+                <td><i>I<sub>x</sub></i>, slug-ft<sup>2</sup></td>
+                <td>3.09E+06</td>
+                <td>3.11E+06</td>
+                <td>3.77E+06</td>
+                <td>3.77E+06</td>
+            </tr>
+            <tr>
+                <td><i>I<sub>y</sub></i>, slug-ft<sup>2</sup></td>
+                <td>2.94E+06</td>
+                <td>2.94E+06</td>
+                <td>3.56E+06</td>
+                <td>3.56E+06</td>
+            </tr>
+            <tr>
+                <td><i>I<sub>z</sub></i>, slug-ft<sup>2</sup></td>
+                <td>5.58E+06</td>
+                <td>5.88E+06</td>
+                <td>7.13E+06</td>
+                <td>7.13E+06</td>
+            </tr>
+            <tr>
+                <td><i>I<sub>xz</sub></i>, slug-ft<sup>2</sup></td>
+                <td>28000</td>
+                <td>-64500</td>
+                <td>45.000</td>
+                <td>53.700</td>
+            </tr>
+            <tr>
+                <td><i>δ<sub>flap</sub></i>, deg</td>
+                <td>35</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</html>
+
+<style>
+    #builder {
+        background-color: rgba(129, 129, 129, 0.3);
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px  rgba(129, 129, 129, 50);
+    }
+
+    .big_main_container {}
+
+    .table_container {
+        position: relative;
+        top: 5px;
+        background-color: beige;
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px  rgba(129, 129, 129, 50);
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td,
+    th {
+        border: 2px solid gainsboro;
+        text-align: left;
+        padding: 8px;
+    }
+</style>

@@ -1,0 +1,11 @@
+div div{
+    border: 5px solid red;
+    margin: auto;
+    margin-top: 20px;
+}
+
+div div:focus{
+    border: 5px solid blue;
+    margin: auto;
+    margin-top: 20px;
+}

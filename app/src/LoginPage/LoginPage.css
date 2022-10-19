@@ -1,0 +1,173 @@
+html {
+	background-color: gainsboro;
+	font-family: 'Reem Kufi Ink', serif;
+	font-weight: bold;
+}
+
+.name_icon {
+	position: relative;
+	height: 350px;
+	top: 0px;
+	left: calc(50% - 175px);
+}
+
+.outter_container {
+	position: relative;
+	left: calc(50% - 500px);
+	top: calc(30vh - 100px);
+	width: 1000px;
+	height: 500px;
+	border: 1px solid gainsboro;
+}
+
+.main_container {
+	background-color: beige;
+	position: relative;
+	display: block;
+	margin: auto;
+	text-align: center;
+	border: 1px solid beige;
+	box-shadow: 10px 5px gainsboro;
+	border-radius: 10px;
+	box-shadow: 1px 1px 2px rgb(129, 129, 129);
+}
+
+.title {
+	width: 100%;
+	background-color: rgba(250, 128, 114, 0.10);
+	border-radius: 10px;
+}
+
+.title img {
+	width: 30%;
+}
+
+video {
+	width: 70%;
+}
+
+.inner_container {
+	position: relative;
+	top: 20px;
+	width: 30%;
+}
+
+.input {
+	background-color: gainsboro;
+	text-align: center;
+	width: 85%;
+	height: 40px;
+	border: 0px;
+	margin: 10px;
+	border-radius: 25px;
+	font-family: 'Reem Kufi Ink', serif;
+	font-weight: bold;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.login {
+	background-color: lightgreen;
+	text-align: center;
+	width: calc(85% );
+	height: 40px;
+	border: 0px;
+	margin: 10px;
+	border-radius: 25px;
+	font-family: 'Reem Kufi Ink', serif;
+	font-weight: bold;
+	box-shadow: 1px 1px 2px rgb(129, 129, 129);
+}
+
+.container {
+	width: 100%;
+	display: flex;
+}
+
+.login:hover {
+	background-color: darkolivegreen;
+	color: lightgreen;
+}
+
+.guest_login {
+	position: relative;
+	width: 45%;
+	display: block;
+}
+
+.guest_login>a {
+	display: block;
+	font-size: small;
+	text-decoration: none;
+	background-color: rgba(255, 0, 0, 0.084);
+	border-radius: 20px;
+	box-shadow: 1px 1px 2px rgb(129, 129, 129);
+	padding: 8px
+}
+
+.forgot_password>a {
+	font-size: x-small;
+	text-decoration: none;
+	color: red;
+	width: calc(85% + 20px);
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.guest_login>a {
+	color: rgb(107, 107, 107);
+	background-color: gainsboro;
+}
+
+.forgot_password :hover {
+	color: brown;
+}
+
+.guest_login :hover {
+	background-color: lightgreen;
+}
+
+.guest_login>a:active, .forgot_password:active, .login:active {
+	outline: 5px solid rgba(65, 105, 225, 0.50);
+	;
+}
+
+.login_Icon {
+	position: absolute;
+	left: calc(50% - 50px);
+	width: 100px;
+	height: 100px;
+	box-shadow: 10px 5px gainsboro;
+	z-index: 1000;
+	border-radius: 50%;
+	border: 2px solid black;
+}
+
+.forgot_password {
+	text-align: left;
+	width: calc(85% + 20px);
+	padding-left: 10px;
+	margin: auto;
+}
+
+.footer {
+	position: relative;
+	margin: auto;
+	top: 25px;
+	width: calc(85% + 20px);
+	display: flex;
+	justify-content: space-between;
+}
+
+.input {
+	box-shadow: 1px 1px 2px rgb(129, 129, 129);
+}
+
+.input.required:invalid {
+	outline: 1px solid red;
+	box-shadow: 1px 1px 10px rgb(138, 0, 0);
+}
+
+.input:focus {
+	outline: none;
+}

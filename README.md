@@ -8,3 +8,6 @@ But so far the current version of the application only have the ability to build
 # Start the project
 Start the spring boot application
 run npm start inside app folder
+
+# View older version at Github Page
+https://dickson1115.github.io/capstone/

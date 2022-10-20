@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,15 +17,23 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+/*
+ *  User that contain the login and personal info of the user. Also the project that they have created
+ */
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @Column(name="user_id")
    private Long id;
    private String firstName;
    private String lastName;
@@ -33,34 +42,35 @@ public class User {
    private String name;
    
    @OneToMany( cascade = CascadeType.ALL)
+   @JoinColumn(name="user_id")
    private List<Project> projects;
 
    @ManyToMany( cascade = CascadeType.ALL)
    @JoinTable(
            name = "users_roles",
            joinColumns = @JoinColumn(
-                   name = "user_id", referencedColumnName = "id"),
+                   name = "user_id", referencedColumnName = "user_id"),
            inverseJoinColumns = @JoinColumn(
                    name = "role_id", referencedColumnName = "id"))
    private Collection<Role> roles;
 
-   public User() {
-   }
-
-   public User(String firstName, String lastName, String email, String password) {
-       this.firstName = firstName;
-       this.lastName = lastName;
-       this.email = email;
-       this.password = password;
-   }
-
-   public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
-       this.firstName = firstName;
-       this.lastName = lastName;
-       this.email = email;
-       this.password = password;
-       this.roles = roles;
-   }
+//   public User() {
+//   }
+//
+//   public User(String firstName, String lastName, String email, String password) {
+//       this.firstName = firstName;
+//       this.lastName = lastName;
+//       this.email = email;
+//       this.password = password;
+//   }
+//
+//   public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+//       this.firstName = firstName;
+//       this.lastName = lastName;
+//       this.email = email;
+//       this.password = password;
+//       this.roles = roles;
+//   }
 
 //   public Long getId() {
 //       return id;
@@ -110,15 +120,15 @@ public class User {
 //       this.roles = roles;
 //   }
 
-   @Override
-   public String toString() {
-       return "User{" +
-               "id=" + id +
-               ", firstName='" + firstName + '\'' +
-               ", lastName='" + lastName + '\'' +
-               ", email='" + email + '\'' +
-               ", password='" + "*********" + '\'' +
-               ", roles=" + roles +
-               '}';
-   }
+//   @Override
+//   public String toString() {
+//       return "User{" +
+//               "id=" + id +
+//               ", firstName='" + firstName + '\'' +
+//               ", lastName='" + lastName + '\'' +
+//               ", email='" + email + '\'' +
+//               ", password='" + "*********" + '\'' +
+//               ", roles=" + roles +
+//               '}';
+//   }
 }

@@ -36,7 +36,7 @@ import axios from 'axios'
 import LoginPage from "./LoginPage/LoginPage";
 // import RegisteringPage from "./RegisteringPage/RegisteringPage"
 
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 var trace = [];
 var trace_forward = [];
 function App() {
@@ -111,25 +111,28 @@ function App() {
     var viewingAngle = componentsPropsEntry[0];
     if (viewingAngle == "front") {
       var resize_drag_element_object = {
-        id: componentsInCanvasFront.length,
+        tabIndex: componentsInCanvasFront.length,
         src: target.firstChild.src,
-        name: target.lastChild.textContent,
+        part_type: target.lastChild.textContent,
+        z_index:componentsInCanvasFront.length,
       }
       setComponentsInCanvasFront(componentsInCanvasFront => [...componentsInCanvasFront, resize_drag_element_object]);
     }
     else if (viewingAngle == "side") {
       var resize_drag_element_object = {
-        id: componentsInCanvasSide.length,
+        tabIndex: componentsInCanvasSide.length,
         src: target.firstChild.src,
-        name: target.lastChild.textContent,
+        part_type: target.lastChild.textContent,
+        z_index:componentsInCanvasFront.length,
       }
       setComponentsInCanvasSide(componentsInCanvasSide => [...componentsInCanvasSide, resize_drag_element_object]);
     }
     else {
       var resize_drag_element_object = {
-        id: componentsInCanvasTop.length,
+        tabIndex: componentsInCanvasTop.length,
         src: target.firstChild.src,
-        name: target.lastChild.textContent,
+        part_type: target.lastChild.textContent,
+        z_index:componentsInCanvasFront.length,
       }
       setComponentsInCanvasTop(componentsInCanvasTop => [...componentsInCanvasTop, resize_drag_element_object]);
     }
@@ -202,6 +205,78 @@ function App() {
   //   baseURL: 'http://localhost:8082'
   // })
   const [componentsInCanvas, setComponentsInCanvas] = useState([]);
+  useEffect(() => {
+    //Runs only on the first render
+    console.log("test loaded")
+    var api = axios.create({
+      baseURL: "http://localhost:8083"
+    })
+    api.get('/get')
+      .then(function (response) {
+        console.log(response.data);
+        console.log(response.data == "");
+        
+        if (response.data == "") {
+          console.log("set new project");
+          setNewProject(true);
+        }
+        else {
+          setProjectId(response.data.id);
+          console.log(projectId);
+        
+        var elements = response.data.resizeDragElements;
+        elements.sort((a,b)=>a.z_index - b.z_index);
+          for (const element of elements) {
+            console.log(element.part_type)
+            if (element.view = "front") {
+              setComponentsInCanvasFront(componentsInCanvasFront => [...componentsInCanvasFront, element]);
+            }
+            else if (element.view = "side") {
+              setComponentsInCanvasSide(componentsInCanvasSide => [...componentsInCanvasSide, element]);
+            }
+            else {
+              setComponentsInCanvasTop(componentsInCanvasTop => [...componentsInCanvasTop, element]);
+            }
+          }
+          // setComponentsInCanvasFront(componentsInCanvasFront => [...componentsInCanvasFront, front_elements]);
+          // setComponentsInCanvasSide(componentsInCanvasSide => [...componentsInCanvasFront, side_elements]);
+          // setComponentsInCanvasTop(componentsInCanvasTop => [...componentsInCanvasFront, top_elements]);
+          // var newElement = document.createElement('img');
+          // newElement.setAttribute("class", element.className);
+          // newElement.setAttribute("src", element.src);
+          // newElement.setAttribute("data-x", element.data_x);
+          // newElement.setAttribute("data-y", element.data_y);
+          // newElement.setAttribute("classname2", element.classname2);
+          // newElement.setAttribute("tabIndex", element.tabIndex);
+          // newElement.style.transform = element.transform;
+          // newElement.style.height = element.height;
+          // newElement.style.width = element.width;
+          // newElement.style.zIndex = element.z_index;
+          // document.querySelector("#canvas_" + element.view).appendChild(newElement);
+          // newElement.style.touchAction = "none";
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+  const deleteProjectOnClick = () => {
+    var api = axios.create({
+      baseURL: "http://localhost:8083"
+    })
+    console.log('delete');
+    console.log(projectId);
+    api.delete(`/delete/${projectId}`)
+      .then(function (response) {
+        console.log(response.data);
+        setNewProject(true);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    setNewProject(false);
+  }
+  const [projectId, setProjectId] = useState(1);
   var object = {
     height: "141px",
     src: "http://localhost:3000/static/media/horizontal_stab_front.8638d5a4a2a1b5344ad5.png",
@@ -215,7 +290,7 @@ function App() {
     tabIndex: "0",
     transform: "translate(149px, 120px)",
   }
-
+  const [newProject, setNewProject] = useState(false);
   const saveProjectOnClick = () => {
     var elements = [];
     var children_elements = document.querySelector("#canvas_front").children;
@@ -228,31 +303,13 @@ function App() {
         view: "front",
         width: child.style.width,
         z_index: child.style.zIndex,
-        class: child.getAttribute("class"),
+        className: child.getAttribute("class"),
         classname2: child.getAttribute("classname2"),
-        id: child.getAttribute("id"),
         tabIndex: child.getAttribute("tabindex"),
         transform: child.style.transform,
+        projectId: projectId,
+        part_type: child.getAttribute("part-type"),
       };
-      const api = axios.create({
-        baseURL: "http://localhost:8083"
-      })
-
-
-      // console.log(api.get('/').then(res=>{
-      //   console.log(res.data)
-      // }));
-
-      api.post('/post', {
-        firstName: 'Fred',
-        lastName: 'Flintstone'
-      })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
 
       elements.push(element);
     }
@@ -271,6 +328,8 @@ function App() {
         id: child.getAttribute("id"),
         tabIndex: child.getAttribute("tabindex"),
         transform: child.style.transform,
+        projectId: projectId,
+        part_type: child.getAttribute("part-type"),
       };
       elements.push(element);
     }
@@ -289,8 +348,46 @@ function App() {
         id: child.getAttribute("id"),
         tabIndex: child.getAttribute("tabindex"),
         transform: child.style.transform,
+        projectId: projectId,
+        part_type: child.getAttribute("part-type"),
       };
+   
       elements.push(element);
+    }
+
+    var api = axios.create({
+      baseURL: "http://localhost:8083"
+    })
+    if (newProject) {
+      console.log('post');
+      var project = {
+        resizeDragElements: elements,
+      }
+      api.post('/post', project)
+        .then(function (response) {
+          console.log(response);
+          console.log(projectId);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      setNewProject(false);
+    }
+    else {
+      console.log('put');
+      var project = {
+        id: projectId,
+        resizeDragElements: elements,
+      }
+      api.put('/put', project)
+        .then(function (response) {
+          console.log(response);
+          console.log(projectId);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      setNewProject(false);
     }
     // setComponentsInCanvas(...componentsInCanvas, elements);
 
@@ -307,6 +404,7 @@ function App() {
     // newElement.style.width = object.width;
     // document.querySelector("#canvas_"+object.view).appendChild(newElement);
   }
+
   return (
     //530 media queries
     <AuthContext.Provider value={{
@@ -320,23 +418,23 @@ function App() {
       trace: trace,
       trace_forward: trace_forward,
       saveProjectOnClick: saveProjectOnClick,
-
+      deleteProjectOnClick: deleteProjectOnClick,
     }}>
 
       <div className="App">
         {/* <LoginPage/> */}
         <BrowserRouter >
-        <Routes >
-            <Route path="/" element={<LoginPage />}/>
-              <Route path="/build" element={
-                <body>
-                  <NavigationBar />
-                  <AircraftComponentsSession />
-                  <BuildWindow show={showBuildWindow[0]} componentsInCanvas={componentsInCanvasFront} viewingAngle={"front"} />
-                  <BuildWindow show={showBuildWindow[1]} componentsInCanvas={componentsInCanvasSide} viewingAngle={"side"} />
-                  <BuildWindow show={showBuildWindow[2]} componentsInCanvas={componentsInCanvasTop} viewingAngle={"top"} />
-                </body>
-              } />
+          <Routes >
+            {/* <Route path="/" element={<LoginPage />} /> */}
+            <Route path="" element={
+              <div>
+                <NavigationBar />
+                <AircraftComponentsSession />
+                <BuildWindow show={showBuildWindow[0]} componentsInCanvas={componentsInCanvasFront} viewingAngle={"front"} />
+                <BuildWindow show={showBuildWindow[1]} componentsInCanvas={componentsInCanvasSide} viewingAngle={"side"} />
+                <BuildWindow show={showBuildWindow[2]} componentsInCanvas={componentsInCanvasTop} viewingAngle={"top"} />
+              </div>
+            } />
           </Routes >
         </BrowserRouter >
         {/* <NavigationBar />

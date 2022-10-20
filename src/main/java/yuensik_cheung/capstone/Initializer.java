@@ -49,16 +49,16 @@ class Initializer implements CommandLineRunner {
 
     @Override
     public void run(String... strings) {
-    	ResizeDragElement resizeDragElement = new ResizeDragElement(1L,12,50,100,200,0,0,"","front");
-    	ResizeDragElement resizeDragElement2 = new ResizeDragElement(2L,50,50,100,200,1,1,"","front");
-    	ResizeDragElement resizeDragElement3 = new ResizeDragElement(3L,100,50,100,200,2,2,"","front");
-    	System.out.println("1231231231231232"+resizeDragElement);
-    	ResizeDragElement[] arr = {resizeDragElement,resizeDragElement2,resizeDragElement3};
-    	List<ResizeDragElement> list = new ArrayList<ResizeDragElement>(Arrays.asList(arr));
-    	Project	project = new Project(1L,"name",list);
-    	repository.save(project);
-    	Project project1 = repository.findOne(1L);
-        System.out.println(project1);
-        System.out.println(project1.getResizeDragElements());
+//    	ResizeDragElement resizeDragElement = new ResizeDragElement(1L,12,50,100,200,0,0,"","front");
+//    	ResizeDragElement resizeDragElement2 = new ResizeDragElement(2L,50,50,100,200,1,1,"","front");
+//    	ResizeDragElement resizeDragElement3 = new ResizeDragElement(3L,100,50,100,200,2,2,"","front");
+//    	System.out.println("1231231231231232"+resizeDragElement);
+//    	ResizeDragElement[] arr = {resizeDragElement,resizeDragElement2,resizeDragElement3};
+//    	List<ResizeDragElement> list = new ArrayList<ResizeDragElement>(Arrays.asList(arr));
+//    	Project	project = new Project(1L,"name",list);
+//    	repository.save(project);
+//    	Project project1 = repository.findOne(1L);
+//        System.out.println(project1);
+//        System.out.println(project1.getResizeDragElements());
     }
 }

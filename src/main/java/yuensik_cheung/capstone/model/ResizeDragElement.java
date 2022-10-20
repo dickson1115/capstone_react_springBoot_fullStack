@@ -12,7 +12,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-
+/*
+ * This is a React component that going to display on the builder page. There attribute are essential for calculating
+ * the aircraft perform later the project
+ */
 @Data
 @Entity
 @NoArgsConstructor
@@ -20,15 +23,21 @@ import lombok.NonNull;
 
 public class ResizeDragElement {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="resizeDragElement_id")
 	private Long id;
-	private double position_x;
-	private double position_y;
-	private double height;
-	private double width;
-	private double z_index;
-	private double index_num;
-	private String image_src;
+    @Column(name="project_id")
+    private String projectId;
+	private String data_x;
+	private String data_y;
+	private String height;
+	private String width;
+	private String z_index;
+	private String index_num;
+	private String src;
 	private String view;
+	private String className;
+	private String tabIndex;
+	private String part_type;
+	
 }

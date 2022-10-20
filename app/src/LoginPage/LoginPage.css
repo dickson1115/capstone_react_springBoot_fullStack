@@ -119,7 +119,7 @@ video {
 	background-color: gainsboro;
 }
 
-.forgot_password :hover {
+.forgot_password>a :hover {
 	color: brown;
 }
 

@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -25,6 +27,7 @@ import yuensik_cheung.capstone.service.ResizeDragElementService;
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.MethodName.class)
 class RestfulControllerTest {
 
     @Autowired
@@ -51,37 +54,30 @@ class RestfulControllerTest {
         );
     }
 
-//    @Before
-//    void setup_findProjectTest() {
-//        System.out.println("input"+projectTest);
-//        projectService.save(projectTest);
-//    }
     @Test
     void findProjectTest() {
         projectService.save(projectTest);
-        System.out.println("input"+projectTest);
         Project project = projectService.findOne(1L);
-        System.out.println("output"+project);
         assertThat(project.equals(projectTest));
     }
     
     @ParameterizedTest
     @MethodSource("provideStringsForFindProjectTest")
     void findProjectTest(Long id, Project expected) {
+        projectService.save(projectTest);
         Project project = projectService.findOne(id);
-        System.out.println("output"+project);
         assertEquals(expected,project); 
     }
-//    @Test
-//    void deleteElementByProjectId() {
-//        projectService.save(projectTest);
-//        resizeDragElementService.deleteByProjectId(2L);
-//        Project project = projectService.findOne(2L);
-//        System.out.println("output"+project);
-//        assertEquals(null,project.getResizeDragElements());
-//    }    
     @Test
-    void deleteProjectTest() {
+    void ydeleteElementByProjectId() {
+        projectService.save(projectTest);
+        resizeDragElementService.deleteByProjectId(1L);
+        Project project = projectService.findOne(1L);
+        assertEquals(0,project.getResizeDragElements().size());
+    }    
+    @Test
+    void zdeleteProjectTest() {
+        projectService.save(projectTest);
         projectService.deleteByProjectId(1L);
         Project project = projectService.findOne(1L);
         assertEquals(null,project);

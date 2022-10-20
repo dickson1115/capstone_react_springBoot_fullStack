@@ -53,6 +53,9 @@ package yuensik_cheung.capstone;
 ////  }
 ////}
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -61,56 +64,89 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 // We will create userService class in upcoming step
-   @Autowired
-   private UserService userService;
+    @Autowired
+    private UserService userService;
 
-   @Override
-   protected void configure(HttpSecurity http) throws Exception {
-       http.cors().and()
-               .authorizeRequests()
-                   .antMatchers(
-                           "/registration**",
-                           "/js/**",
-                           "/css/**",
-                           "/img/**",
-                           "/webjars/**",
-                           "/get/**",
-                           "/put/**").permitAll()
-                   .anyRequest().authenticated()
-               .and()
-                   .formLogin()
-                       .loginPage("/login")
-                           .permitAll()
-               .and()
-                   .logout()
-                       .invalidateHttpSession(true)
-                       .clearAuthentication(true)
-                       .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                       .logoutSuccessUrl("/login?logout")
-               .permitAll();
-   }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.cors().and()
+                .authorizeRequests()
+                .antMatchers(
+                        "/registration**",
+                        "/js/**",
+                        "/css/**",
+                        "/img/**",
+                        "/webjars/**",
+                        "/get/**",
+                        "/put/**",
+                        "/delete/**")
+                .permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout()
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout")
+                .permitAll()
+                .and().formLogin().successHandler(corsAuthSuccessHandler()).loginPage("/login")
+                .and().csrf().disable();
+    }
 
-   @Bean
-   public BCryptPasswordEncoder passwordEncoder(){
-       return new BCryptPasswordEncoder();
-   }
+    @Bean
+    public AuthenticationSuccessHandler corsAuthSuccessHandler() {
+        return new SimpleUrlAuthenticationSuccessHandler() {
+            @Override
+            protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response) {
+                if (request.getHeader("Origin").equals("http://localhost:3000"))
+                    return request.getHeader("Origin");
+                return super.determineTargetUrl(request, response);
+            }
+        };
+    }
 
-   @Bean
-   public DaoAuthenticationProvider authenticationProvider(){
-       DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-       auth.setUserDetailsService(userService);
-       auth.setPasswordEncoder(passwordEncoder());
-       return auth;
-   }
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("http://localhost:3000")
+                        .allowCredentials(true);
+            }
+        };
+    }
 
-   @Override
-   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-       auth.authenticationProvider(authenticationProvider());
-   }
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+        auth.setUserDetailsService(userService);
+        auth.setPasswordEncoder(passwordEncoder());
+        return auth;
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider());
+    }
 
 }

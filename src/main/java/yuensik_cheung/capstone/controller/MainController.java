@@ -20,6 +20,12 @@ public class MainController {
         response.setStatus(302);
     }
     
+//    @CrossOrigin(origins = "http://localhost:3000")
+//    @GetMapping("/")
+//    public String root() {
+//        return "index";
+//    }
+    
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/login")
     public String login(Model model) {

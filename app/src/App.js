@@ -123,7 +123,7 @@ function App() {
         tabIndex: componentsInCanvasSide.length,
         src: target.firstChild.src,
         part_type: target.lastChild.textContent,
-        z_index:componentsInCanvasFront.length,
+        z_index:componentsInCanvasSide.length,
       }
       setComponentsInCanvasSide(componentsInCanvasSide => [...componentsInCanvasSide, resize_drag_element_object]);
     }
@@ -132,7 +132,7 @@ function App() {
         tabIndex: componentsInCanvasTop.length,
         src: target.firstChild.src,
         part_type: target.lastChild.textContent,
-        z_index:componentsInCanvasFront.length,
+        z_index:componentsInCanvasTop.length,
       }
       setComponentsInCanvasTop(componentsInCanvasTop => [...componentsInCanvasTop, resize_drag_element_object]);
     }
@@ -211,7 +211,7 @@ function App() {
     var api = axios.create({
       baseURL: "http://localhost:8083"
     })
-    api.get('/get')
+    api.get('/get',{ withCredentials: true })
       .then(function (response) {
         console.log(response.data);
         console.log(response.data == "");
@@ -228,10 +228,10 @@ function App() {
         elements.sort((a,b)=>a.z_index - b.z_index);
           for (const element of elements) {
             console.log(element.part_type)
-            if (element.view = "front") {
+            if (element.view == "front") {
               setComponentsInCanvasFront(componentsInCanvasFront => [...componentsInCanvasFront, element]);
             }
-            else if (element.view = "side") {
+            else if (element.view == "side") {
               setComponentsInCanvasSide(componentsInCanvasSide => [...componentsInCanvasSide, element]);
             }
             else {
@@ -266,7 +266,7 @@ function App() {
     })
     console.log('delete');
     console.log(projectId);
-    api.delete(`/delete/${projectId}`)
+    api.delete(`/delete`,{ withCredentials: true })
       .then(function (response) {
         console.log(response.data);
         setNewProject(true);
@@ -323,9 +323,8 @@ function App() {
         view: "side",
         width: child.style.width,
         z_index: child.style.zIndex,
-        class: child.getAttribute("class"),
+        className: child.getAttribute("class"),
         classname2: child.getAttribute("classname2"),
-        id: child.getAttribute("id"),
         tabIndex: child.getAttribute("tabindex"),
         transform: child.style.transform,
         projectId: projectId,
@@ -343,9 +342,8 @@ function App() {
         view: "top",
         width: child.style.width,
         z_index: child.style.zIndex,
-        class: child.getAttribute("class"),
+        className: child.getAttribute("class"),
         classname2: child.getAttribute("classname2"),
-        id: child.getAttribute("id"),
         tabIndex: child.getAttribute("tabindex"),
         transform: child.style.transform,
         projectId: projectId,
@@ -363,8 +361,9 @@ function App() {
       var project = {
         resizeDragElements: elements,
       }
-      api.post('/post', project)
+      api.post('/post', project,{ withCredentials: true })
         .then(function (response) {
+          console.log(project);
           console.log(response);
           console.log(projectId);
         })

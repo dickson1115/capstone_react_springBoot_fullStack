@@ -1,0 +1,282 @@
+html {
+  background-color: beige;
+  font-family: "Reem Kufi Ink", serif;
+  font-weight: bold;
+}
+
+html::-webkit-scrollbar {
+  width: 1vw;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: beige;
+  border-radius: 100px;
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 1px solid transparent;
+  background-clip: content-box;
+  background-color: rgb(135, 135, 135);
+}
+
+.top_bar,
+.top_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  min-width: 1880px;
+  width: 100%;
+  height: 50px;
+  margin: auto;
+  align-items: center;
+  background-color: rgba(170, 167, 167, 0.492);
+  margin-bottom: 100px;
+}
+
+.top_background {
+  background-color: beige;
+}
+
+.navigation_bar {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  font-size: larger;
+}
+
+.navigation_bar div {
+  position: relative;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+.name_icon {
+  width: 200px;
+}
+
+.big_main_container {
+  width: 1880px;
+  margin: auto;
+  position: relative;
+  margin-top: 55px;
+}
+
+.components_outter_container {
+  box-shadow: 1px 1px 5px rgb(129, 129, 129);
+  background-color: beige;
+  padding: 10px;
+  border-radius: 10px;
+  margin: auto;
+  margin-bottom: 5px;
+  display: flex;
+}
+
+.components_outter_container > div {
+  display: block;
+  margin-right: 20px;
+  align-items: center;
+}
+
+.components_outter_container > div > * {
+  display: block;
+  margin-bottom: 5px;
+  box-shadow: 1px 1px 2px rgb(129, 129, 129);
+}
+
+.components_outter_container > div > div {
+  box-shadow: none;
+}
+
+.components_outter_container > div:last-child {
+  display: block;
+  margin: 0px;
+}
+
+.components_container {
+  display: flex;
+  align-content: space-around;
+  gap: 5px;
+}
+
+.component_container {
+  background-color: rgba(220, 220, 220, 0.8);
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 1px 1px 2px rgb(129, 129, 129);
+}
+
+.component_container:focus {
+  outline: 5px solid rgba(65, 105, 225, 0.5);
+}
+
+.component_container img {
+  justify-content: center;
+  height: 40px;
+}
+
+.component_container div {
+  text-align: center;
+}
+
+.view_container .demo {
+  width: 100%;
+}
+
+.views_container {
+  display: flex;
+  flex-grow: 1;
+  width: 1880px;
+}
+
+.view_container {
+  display: flex;
+  background-color: beige;
+  border-radius: 10px;
+}
+
+.builder_window {
+  display: flex;
+}
+
+.user_form {
+  background-color: beige;
+  /* min-width: 80px; */
+  width: 130px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 5px;
+  display: block;
+  box-shadow: 1px 1px 5px rgb(129, 129, 129);
+}
+
+.form_input {
+  width: 90%;
+  margin-top: 2px;
+}
+
+input {
+  background-color: rgba(220, 220, 220, 0.8);
+  border: 1px solid rgb(129, 129, 129);
+  margin-top: 2px;
+  border-radius: 5px;
+  font-family: "Reem Kufi Ink", serif;
+  font-weight: bold;
+  width: 100%;
+  outline: none;
+  box-shadow: 1px 1px 2px rgb(129, 129, 129);
+}
+
+input:focus {
+  background-color: beige;
+  outline: 5px solid rgba(65, 105, 225, 0.5);
+}
+
+.view_container_title {
+  text-align: center;
+}
+
+.resize_drag {
+  position: absolute;
+  height: 120px;
+}
+
+.resize_drag:focus {
+  outline: 5px solid rgba(65, 105, 225, 0.5);
+  background-color: rgba(65, 105, 225, 0.1254901961);
+  border-radius: 5px;
+}
+
+.canvas_container {
+  display: block;
+  box-shadow: 1px 1px 5px rgb(129, 129, 129);
+  margin: 2px;
+  border-radius: 10px;
+}
+
+.canvas {
+  width: 1600px;
+  height: 1000px;
+}
+
+.viewing_angle {
+  display: flex;
+  align-content: space-around;
+  gap: 5px;
+}
+
+select {
+  font-family: "Reem Kufi Ink", serif;
+  font-weight: bold;
+  font-size: larger;
+  background-color: beige;
+  border-radius: 5px;
+}
+
+#front {
+  display: flex;
+}
+
+#side {
+  display: none;
+}
+
+#top {
+  display: none;
+}
+
+.view_container_manu {
+  display: block;
+  width: 130px;
+  text-align: center;
+  box-shadow: 1px 1px 5px rgb(129, 129, 129);
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.layer {
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  margin-top: 10px;
+  padding: 1px;
+  background-color: gainsboro;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgb(129, 129, 129);
+}
+
+#front_big_view_container {
+  display: flex;
+}
+
+#side_big_view_container {
+  display: none;
+}
+
+#top_big_view_container {
+  display: none;
+}
+
+.button:hover {
+  background-color: rgba(129, 129, 129, 0.3);
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px rgb(129, 129, 129);
+}
+
+.button {
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.button:visited {
+  color: black;
+}
+
+.button:active {
+  outline: 5px solid rgba(65, 105, 225, 0.5);
+}/*# sourceMappingURL=builderPage.css.map */

@@ -15,6 +15,7 @@ import yuensik_cheung.capstone.repository.ProjectRepository;
 public class ProjectService {
     @Autowired
     ProjectRepository projectRepository;
+    
 
     public Project findOne(Long id) {
         return projectRepository.findOne(id);
@@ -24,6 +25,7 @@ public class ProjectService {
         projectRepository.save(project);
     }
     public List<Project> findAllbyUserId(Long id){
+        
         return projectRepository.findAllbyUserId(id);
     }
     public void deleteByProjectId(Long id) {

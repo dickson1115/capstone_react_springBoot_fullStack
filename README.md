@@ -1,3 +1,7 @@
+# Please check the updated verson
+https://github.com/dickson1115/plane_builder_app
+https://dickson1115.github.io/plane_builder_app/#/Builder
+
 # capstone_react_springBoot_fullStack
 A full-stack application for building an aircraft in two-dimensional views. User can drag their aircraft components to their desired positions and save their progress onto the database.
 Built with React, HTML, CSS, SpringBoot, Spring Security, MariaDB, Java
